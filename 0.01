@@ -1,1 +1,32 @@
+import turtle
+#configuration
+t = turtle.Turtle()
+screen = turtle.Screen()
 
+
+#tela
+screen.screensize(400, 300,"green")
+
+
+
+def right():
+    t.setheading(0)
+def left():
+    t.setheading(180)
+def up():
+    t.setheading(90)
+def down():
+    t.setheading(270)
+
+
+while True:
+    t.up()
+    velocidade = 1
+    t.forward(velocidade)
+    screen.onkeypress(right, "d")
+    screen.onkeypress(up, "w")
+    screen.onkeypress(left, "a")
+    screen.onkeypress(down, "s")
+
+    turtle.update()
+    screen.listen()
