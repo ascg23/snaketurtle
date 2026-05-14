@@ -1,0 +1,121 @@
+import turtle
+import random
+import time
+#configuration
+t = turtle.Turtle() 
+screen = turtle.Screen()
+delay = 0.1
+
+
+
+#tela
+screen.screensize(400, 300,"green")
+
+#cauda
+cauda = []
+
+       
+   
+#cabeça
+t.shape("square")
+t.speed(0)
+
+
+#fruta
+f=turtle.Turtle()
+f.shape('circle')
+f.color("red")
+f.teleport(random.randint(100,100),random.randint(100,100))
+
+#Movimentação Cabeça
+def right():
+    global direcao
+    if direcao != 180:
+        t.setheading(0)
+def left():
+    global direcao 
+    if direcao != 0:
+        t.setheading(180)
+def up():
+    global direcao
+    if direcao != 270:
+        t.setheading(90)
+def down():
+    global direcao
+    if direcao != 90:
+        t.setheading(270)
+
+velocidade = 20
+vivo = True
+
+while vivo:
+    t.up()
+    t.forward(velocidade)
+    direcao = t.heading()
+    
+    screen.onkeypress(right, "d")
+    screen.onkeypress(up, "w")
+    screen.onkeypress(left, "a")
+    screen.onkeypress(down,"s")
+ 
+
+    screen.update()
+    screen.listen()
+
+
+   
+
+    #Colisão Fruta
+    if t.distance(f)<20:
+        fruta=f.teleport(random.randint(0,250),random.randint(0,250))
+        
+        velocidade += 1
+        delay -= 0.001
+
+        #Adição Nova Cauda
+        cauda_nova = turtle.Turtle()
+        cauda_nova.speed(0)
+        cauda_nova.shape('square')
+        cauda_nova.shapesize(1,1)
+        cauda_nova.up()
+        cauda.append(cauda_nova)
+        
+
+    #Movimentação Cauda
+    if len(cauda)>0:
+            
+        cauda[0].ht
+        x = t.xcor()
+        y = t.ycor()
+        cauda[0].goto(x, y)
+
+    for i in range((len(cauda)-1), 0, -1):
+        j = i-1 
+        
+        x = cauda[j].xcor() 
+        y = cauda[j].ycor() 
+
+
+        cauda[i].goto(x, y)
+
+    #Colisão Cauda
+    
+
+
+    
+
+    #Delay Set
+    time.sleep(delay)
+
+       
+
+        
+        
+            
+
+    #Colisão Borda
+    if t.xcor()>=470 or t.ycor()>=370 or t.xcor()<=-470 or t.ycor()<=-370: 
+        vivo=False
+        
+
+        
