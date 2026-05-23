@@ -254,7 +254,7 @@ while True:
         gm_over.clear()
 
         gm_over.write(
-            "Fim de jogo! R para continuar",
+            "Fim de jogo! Movimente para continuar",
             align="center",
             font=("Arial", 20, "normal")
         )
